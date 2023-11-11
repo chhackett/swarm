@@ -113,10 +113,10 @@ appMain opts = do
       -- Setup virtual terminal
       let mkVty =
             case colorMode opts of
-              Nothing    -> VS.mkVty V.defaultConfig
+              Nothing -> VS.mkVty V.defaultConfig
               Just cMode -> do
-                    platformSettings <- VS.defaultSettings
-                    VS.mkVtyWithSettings V.defaultConfig $ platformSettings { VS.settingColorMode = cMode }
+                platformSettings <- VS.defaultSettings
+                VS.mkVtyWithSettings V.defaultConfig $ platformSettings {VS.settingColorMode = cMode}
       vty <- mkVty
 
       V.setMode (V.outputIface vty) V.Mouse True
